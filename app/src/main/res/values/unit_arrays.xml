@@ -69,5 +69,14 @@
         <item>Fahrenheit (°F)</item>
         <item>Kelvin (K)</item>
     </string-array>
+    <string-array name="weight_units">
+        <item>Kilogram (kg)</item>
+        <item>Gram (g)</item>
+        <item>Milligram (mg)</item>
+        <item>Metric Ton (ton)</item>
+        <item>Pound (lb)</item>
+        <item>Ounce (oz)</item>
+    </string-array>
+
 
 </resources>
