@@ -7,4 +7,5 @@
     <color name="textColor">#FFC5C1C1</color>
     <color name="btnColor">#FFC5C1C1</color>
     <color name="btnTextColor">#FF1E1E1E</color>
+    <color name="error">#FFFF0000</color>
 </resources>

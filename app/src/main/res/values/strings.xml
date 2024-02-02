@@ -12,8 +12,8 @@
     <string name="weight">Weight</string>
     <string name="energy">Energy</string>
     <string name="title_activity_mass">MassActivity</string>
-    <string name="enter_length">Enter Length</string>
+    <string name="enter_length">Enter Units</string>
     <string name="convert">Convert</string>
-    <string name="unitIndicator">": - "</string>
+    <string name="unitIndicator">:-</string>
     <string name="clear">Clear</string>
 </resources>

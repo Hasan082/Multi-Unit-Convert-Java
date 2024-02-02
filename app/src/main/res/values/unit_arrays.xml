@@ -9,4 +9,14 @@
         <item name="ft">Foot (ft)</item>
         <item name="yd">Yard (yd)</item>
     </string-array>
+    <string-array name="area_units">
+        <item>Square Km (km²)</item>
+        <item>Square Meter (m²)</item>
+        <item>Square Cm (cm²)</item>
+        <item>Square Mm (mm²)</item>
+        <item>Square Inch (in²)</item>
+        <item>Square Foot (ft²)</item>
+        <item>Square Yard (yd²)</item>
+    </string-array>
+
 </resources>

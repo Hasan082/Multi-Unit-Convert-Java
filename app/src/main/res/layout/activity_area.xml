@@ -4,6 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".AreaActivity">
+
     <include layout="@layout/app_bar_layout" />
+
+    <ScrollView
+        android:id="@+id/unitScrollParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <EditText
+                android:id="@+id/editTextLengthValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="@string/enter_length"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:autofillHints="" />
+
+            <Spinner
+                android:id="@+id/spinnerUnits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextLengthValue"
+                android:layout_marginBottom="16dp"
+                android:entries="@array/area_units"
+                android:minHeight="48dp" />
+
+            <LinearLayout
+                android:id="@+id/btnWrap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/spinnerUnits"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnConvert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:background="@drawable/btn_bg_color"
+                    android:textColor="@color/btnTextColor"
+                    android:minHeight="48dp"
+                    android:maxWidth="300dp"
+                    android:text="@string/convert" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnClear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:background="@drawable/btn_bg_color"
+                    android:textColor="@color/btnTextColor"
+                    android:minHeight="48dp"
+                    android:maxWidth="300dp"
+                    android:visibility="gone"
+                    android:text="@string/clear" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lengthParentView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnWrap"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical"
+                android:visibility="visible"
+                >
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+
 </LinearLayout>

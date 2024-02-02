@@ -3,7 +3,6 @@ package com.hasan.multiconvert;
 
 import static com.hasan.multiconvert.utils.AppBarUtil.setAppBarTitle;
 
-import android.annotation.SuppressLint;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -31,7 +30,6 @@ public class LengthActivity extends AppCompatActivity {
     String[] resourceUnits;
     double inputValue;
 
-    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,8 +56,9 @@ public class LengthActivity extends AppCompatActivity {
                     View unitLayoutView = getLayoutInflater().inflate(R.layout.length_unit_layout, parentLayout, false);
                     TextView unitName = unitLayoutView.findViewById(R.id.unitMetric);
                     TextView unitVal = unitLayoutView.findViewById(R.id.unitValue);
-                    unitName.setText(resourceUnits[i] + ":- ");
-//                    unitVal.setText(String.format(Locale.US, "%.3f", unitValArray[i]));
+                    String kmValue = resourceUnits[i];
+                    String formattedText = kmValue + getString(R.string.unitIndicator) + " ";
+                    unitName.setText(formattedText);
                     if (unitValArray[i] % 1 == 0) {
                         formattedValue = String.format(Locale.US, "%.0f", unitValArray[i]);
                     } else if (unitValArray[i] * 1000 % 1 == 0) {
@@ -71,10 +70,13 @@ public class LengthActivity extends AppCompatActivity {
                     }
                     unitVal.setText(formattedValue);
 
+                    if (resourceUnits[i].equals(spinnerText)) {
+                        unitLayoutView.setVisibility(View.GONE);
+                    }
+
                     parentLayout.addView(unitLayoutView);
                 }
 
-                editTextLengthValue.setText("");
                 editTextLengthValue.clearFocus();
                 HideKeyBoard.hideKeyboard(this, v);
                 btnConvert.setVisibility(View.GONE);
@@ -82,11 +84,13 @@ public class LengthActivity extends AppCompatActivity {
 
             } else {
                 HideKeyBoard.hideKeyboard(this, v);
-                Toast.makeText(this, "Please input some value", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Please input length", Toast.LENGTH_LONG).show();
             }
         });
 
         btnClear.setOnClickListener(v -> {
+            editTextLengthValue.setText("");
+            spinner.setSelection(0);
             parentLayout.removeAllViews();
             btnConvert.setVisibility(View.VISIBLE);
             btnClear.setVisibility(View.GONE);
@@ -95,7 +99,7 @@ public class LengthActivity extends AppCompatActivity {
 
     }
 
-    public double[] ConvertUnits(double inputValue, String spinnerText) {
+    private double[] ConvertUnits(double inputValue, String spinnerText) {
 
         double km, m, cm, mm, inch, foot, yard;
 
