@@ -64,6 +64,10 @@
         <item>Pound/Foot³ (lb/ft³)</item>
         <item>Ounce/Inch³ (oz/in³)</item>
     </string-array>
-
+    <string-array name="temperature_units">
+        <item>Celsius (°C)</item>
+        <item>Fahrenheit (°F)</item>
+        <item>Kelvin (K)</item>
+    </string-array>
 
 </resources>
