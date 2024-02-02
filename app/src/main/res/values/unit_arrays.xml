@@ -26,5 +26,27 @@
         <item>Pound (lb)</item>
         <item>Ounce (oz)</item>
     </string-array>
+    <string-array name="volume_units">
+        <item>Liter (L)</item>
+        <item>Milliliter (mL)</item>
+        <item>Cubic Meter (m³)</item>
+        <item>Cubic Centimeter (cm³)</item>
+        <item>Cubic Millimeter (mm³)</item>
+        <item>US Gallon (gal)</item>
+        <item>US Quart (qt)</item>
+        <item>US Fluid Ounce (fl oz)</item>
+    </string-array>
+    <string-array name="time_units">
+        <item>Second (s)</item>
+        <item>Millisecond (ms)</item>
+        <item>Microsecond (μs)</item>
+        <item>Minute (min)</item>
+        <item>Hour (hr)</item>
+        <item>Day (day)</item>
+        <item>Week (week)</item>
+        <item>Month (month)</item>
+        <item>Year (year)</item>
+    </string-array>
+
 
 </resources>
