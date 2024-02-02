@@ -39,7 +39,7 @@ public class TemperatureActivity extends AppCompatActivity {
         btnConvert = findViewById(R.id.btnConvert);
         btnClear = findViewById(R.id.btnClear);
         res = getResources();
-        resourceUnits = res.getStringArray(R.array.temperature_units);
+        resourceUnits = res.getStringArray(R.array.energy_units);
 
         btnConvert.setOnClickListener(v -> {
             String edyTxtStr = editTextLengthValue.getText().toString().trim();

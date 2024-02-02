@@ -77,6 +77,16 @@
         <item>Pound (lb)</item>
         <item>Ounce (oz)</item>
     </string-array>
+    <string-array name="energy_units">
+        <item>Joule (J)</item>
+        <item>Kilojoule (kJ)</item>
+        <item>Calorie (cal)</item>
+        <item>Kilocalorie (kcal)</item>
+        <item>Electron Volt (eV)</item>
+        <item>British Thermal Unit (BTU)</item>
+        <item>Foot-Pound (ft-lb)</item>
+    </string-array>
+
 
 
 </resources>
