@@ -47,6 +47,23 @@
         <item>Month (month)</item>
         <item>Year (year)</item>
     </string-array>
+    <string-array name="speed_units">
+        <item>Meter/Second (m/s)</item>
+        <item>Kilometer/Hour (km/h)</item>
+        <item>Miles/Hour (mph)</item>
+        <item>Knots (kn)</item>
+        <item>Feet/Second (ft/s)</item>
+        <item>Yard/Second (yd/s)</item>
+        <item>Kilometer/Minute (km/min)</item>
+    </string-array>
+    <string-array name="density_units">
+        <item>Kilogram/Meter³ (kg/m³)</item>
+        <item>Gram/Cm³ (g/cm³)</item>
+        <item>Gram/Liter (g/L)</item>
+        <item>Pound/Inch³ (lb/in³)</item>
+        <item>Pound/Foot³ (lb/ft³)</item>
+        <item>Ounce/Inch³ (oz/in³)</item>
+    </string-array>
 
 
 </resources>
