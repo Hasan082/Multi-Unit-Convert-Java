@@ -18,5 +18,13 @@
         <item>Square Foot (ft²)</item>
         <item>Square Yard (yd²)</item>
     </string-array>
+    <string-array name="mass_units">
+        <item>Kilogram (kg)</item>
+        <item>Gram (g)</item>
+        <item>Milligram (mg)</item>
+        <item>Metric Ton (ton)</item>
+        <item>Pound (lb)</item>
+        <item>Ounce (oz)</item>
+    </string-array>
 
 </resources>
