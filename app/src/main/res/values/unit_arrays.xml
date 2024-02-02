@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="length_units">
+        <item name="km">Kilometer (km)</item>
+        <item name="m">Meter (m)</item>
+        <item name="cm">Centimeter (cm)</item>
+        <item name="mm">Millimeter (mm)</item>
+        <item name="in">Inch (in)</item>
+        <item name="ft">Foot (ft)</item>
+        <item name="yd">Yard (yd)</item>
+    </string-array>
+</resources>
