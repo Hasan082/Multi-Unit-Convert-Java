@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         setupButton(R.id.temp, TemperatureActivity.class);
         setupButton(R.id.weight, WeightActivity.class);
         setupButton(R.id.energy, EnergyActivity.class);
+        setupButton(R.id.angle, AngleActivity.class);
+        setupButton(R.id.fuel, FuelActivity.class);
 
     }
 

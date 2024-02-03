@@ -2,9 +2,6 @@ package com.hasan.multiconvert;
 
 import static com.hasan.multiconvert.utils.AppBarUtil.setAppBarTitle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.hasan.multiconvert.utils.HideKeyBoard;
 
@@ -25,23 +24,21 @@ public class EnergyActivity extends AppCompatActivity {
     Spinner spinner;
     EditText editTextLengthValue;
     Button btnConvert, btnClear;
-    Resources res;
     String[] resourceUnits;
     double inputValue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_energy);
         setAppBarTitle(this);
 
-
         parentLayout = findViewById(R.id.lengthParentView);
         spinner = findViewById(R.id.spinnerUnits);
         editTextLengthValue = findViewById(R.id.editTextLengthValue);
         btnConvert = findViewById(R.id.btnConvert);
         btnClear = findViewById(R.id.btnClear);
-        res = getResources();
-        resourceUnits = res.getStringArray(R.array.energy_units);
+        resourceUnits = getResources().getStringArray(R.array.energy_units);
 
         btnConvert.setOnClickListener(v -> {
             String edyTxtStr = editTextLengthValue.getText().toString().trim();

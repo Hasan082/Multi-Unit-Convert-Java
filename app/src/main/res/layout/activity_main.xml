@@ -333,6 +333,67 @@
 
             </LinearLayout>
 
+<!--            mew -->
+
+            <LinearLayout
+                android:id="@+id/fuel"
+                android:layout_width="0dp"
+                android:layout_height="135dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/cardshadow"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:src="@drawable/fuel"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fuel"
+                    android:textSize="20sp"
+                    android:textColor="@color/textColor"
+                    android:layout_marginTop="5dp"
+                    />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_columnSpan="1"
+                android:layout_rowSpan="1"
+                />
+
+            <LinearLayout
+                android:id="@+id/angle"
+                android:layout_width="0dp"
+                android:layout_height="135dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_marginBottom="15dp"
+                android:gravity="center"
+                android:background="@drawable/cardshadow"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:src="@drawable/angle"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/angle"
+                    android:textSize="20sp"
+                    android:textColor="@color/textColor"
+                    android:layout_marginTop="5dp"
+                    />
+
+            </LinearLayout>
+
         </GridLayout>
 
     </ScrollView>
