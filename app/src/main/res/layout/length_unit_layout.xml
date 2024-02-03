@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="10dp"
+    android:background="@drawable/bottom_border"
     android:paddingBottom="10dp"
     >
 
@@ -11,13 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="unit:-  "
-        android:textSize="20sp" />
+        android:textSize="@dimen/text_small" />
 
     <TextView
         android:id="@+id/unitValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="value"
-        android:textSize="20sp" />
+        android:textSize="@dimen/text_small" />
 
 </LinearLayout>

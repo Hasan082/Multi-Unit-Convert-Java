@@ -1,8 +1,7 @@
-package com.hasan.multiconvert;
+package com.hasan.multiconvert.UnitActivity;
+
 
 import static com.hasan.multiconvert.utils.AppBarUtil.setAppBarTitle;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -14,11 +13,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.hasan.multiconvert.R;
 import com.hasan.multiconvert.utils.HideKeyBoard;
 
 import java.util.Locale;
 
-public class MassActivity extends AppCompatActivity {
+
+public class LengthActivity extends AppCompatActivity {
     LinearLayout parentLayout;
     String formattedValue;
     Spinner spinner;
@@ -27,10 +30,11 @@ public class MassActivity extends AppCompatActivity {
     Resources res;
     String[] resourceUnits;
     double inputValue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mass);
+        setContentView(R.layout.activity_length);
         setAppBarTitle(this);
 
         parentLayout = findViewById(R.id.lengthParentView);
@@ -39,7 +43,7 @@ public class MassActivity extends AppCompatActivity {
         btnConvert = findViewById(R.id.btnConvert);
         btnClear = findViewById(R.id.btnClear);
         res = getResources();
-        resourceUnits = res.getStringArray(R.array.mass_units);
+        resourceUnits = res.getStringArray(R.array.length_units);
 
         btnConvert.setOnClickListener(v -> {
             String edyTxtStr = editTextLengthValue.getText().toString().trim();
@@ -81,7 +85,7 @@ public class MassActivity extends AppCompatActivity {
 
             } else {
                 HideKeyBoard.hideKeyboard(this, v);
-                Toast.makeText(this, "Please input length", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Please input Units", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -97,57 +101,71 @@ public class MassActivity extends AppCompatActivity {
     }
 
     private double[] ConvertUnits(double inputValue, String spinnerText) {
-        double kilogram, gram, milligram, metricTon, pound, ounce;
 
-        if (spinnerText.contains("(kg)")) {
-            kilogram = inputValue;
-            gram = inputValue * 1000;
-            milligram = inputValue * 1_000_000;
-            metricTon = inputValue / 1000;
-            pound = inputValue * 2.20462;
-            ounce = inputValue * 35.274;
-        } else if (spinnerText.contains("(g)")) {
-            kilogram = inputValue / 1000;
-            gram = inputValue;
-            milligram = inputValue * 1000;
-            metricTon = inputValue / 1_000_000;
-            pound = inputValue * 0.00220462;
-            ounce = inputValue * 0.035274;
-        } else if (spinnerText.contains("(mg)")) {
-            kilogram = inputValue / 1_000_000;
-            gram = inputValue / 1000;
-            milligram = inputValue;
-            metricTon = inputValue / 1_000_000_000.0;
-            pound = inputValue * 2.20462e-6;
-            ounce = inputValue * 3.5274e-5;
-        } else if (spinnerText.contains("(ton)")) {
-            kilogram = inputValue * 1000;
-            gram = inputValue * 1_000_000;
-            milligram = inputValue * 1_000_000_000.0;
-            metricTon = inputValue;
-            pound = inputValue * 2204.62;
-            ounce = inputValue * 35_273.96;
-        } else if (spinnerText.contains("(lb)")) {
-            kilogram = inputValue * 0.453592;
-            gram = inputValue * 453.592;
-            milligram = inputValue * 453_592;
-            metricTon = inputValue * 0.000453592;
-            pound = inputValue;
-            ounce = inputValue * 16;
-        } else if (spinnerText.contains("(oz)")) {
-            kilogram = inputValue * 0.0283495;
-            gram = inputValue * 28.3495;
-            milligram = inputValue * 28_349.5;
-            metricTon = inputValue * 2.83495e-5;
-            pound = inputValue * 0.0625;
-            ounce = inputValue;
+        double km, m, cm, mm, inch, foot, yard;
+
+        if (spinnerText.contains("(km)")) {
+            km = inputValue;
+            m = inputValue * 1000;
+            cm = inputValue * 100000;
+            mm = inputValue * 1000000;
+            inch = inputValue * 39370.1;
+            foot = inputValue * 3280.84;
+            yard = inputValue * 1093.61;
+        } else if (spinnerText.contains("(m)")) {
+            km = inputValue / 1000;
+            m = inputValue;
+            cm = inputValue * 100;
+            mm = inputValue * 1000;
+            inch = inputValue * 39.3701;
+            foot = inputValue * 3.28084;
+            yard = inputValue * 1.09361;
+        } else if (spinnerText.contains("(cm)")) {
+            km = inputValue / 100000;
+            m = inputValue / 100;
+            cm = inputValue;
+            mm = inputValue * 10;
+            inch = inputValue / 2.54;
+            foot = inputValue / 30.48;
+            yard = inputValue / 91.44;
+        } else if (spinnerText.contains("(mm)")) {
+            km = inputValue / 1000000;
+            m = inputValue / 1000;
+            cm = inputValue / 10;
+            mm = inputValue;
+            inch = inputValue / 25.4;
+            foot = inputValue / 304.8;
+            yard = inputValue / 914.4;
+        } else if (spinnerText.contains("(in)")) {
+            km = inputValue / 39370.1;
+            m = inputValue / 39.3701;
+            cm = inputValue * 2.54;
+            mm = inputValue * 25.4;
+            inch = inputValue;
+            foot = inputValue / 12;
+            yard = inputValue / 36;
+        } else if (spinnerText.contains("(ft)")) {
+            km = inputValue / 3280.84;
+            m = inputValue / 3.28084;
+            cm = inputValue * 30.48;
+            mm = inputValue * 304.8;
+            inch = inputValue * 12;
+            foot = inputValue;
+            yard = inputValue / 3;
+        } else if (spinnerText.contains("(yd)")) {
+            km = inputValue / 1093.61;
+            m = inputValue / 1.09361;
+            cm = inputValue * 91.44;
+            mm = inputValue * 914.4;
+            inch = inputValue * 36;
+            foot = inputValue * 3;
+            yard = inputValue;
         } else {
-            kilogram = gram = milligram = metricTon = pound = ounce = 0.0;
+            km = m = cm = mm = inch = foot = yard = 0.0;
         }
 
-        return new double[]{kilogram, gram, milligram, metricTon, pound, ounce};
+        return new double[]{km, m, cm, mm, inch, foot, yard};
     }
-
 
 
 }

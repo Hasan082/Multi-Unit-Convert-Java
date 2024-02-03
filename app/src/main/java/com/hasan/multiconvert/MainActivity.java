@@ -6,6 +6,19 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.hasan.multiconvert.UnitActivity.AngleActivity;
+import com.hasan.multiconvert.UnitActivity.AreaActivity;
+import com.hasan.multiconvert.UnitActivity.DensityActivity;
+import com.hasan.multiconvert.UnitActivity.EnergyActivity;
+import com.hasan.multiconvert.UnitActivity.FuelActivity;
+import com.hasan.multiconvert.UnitActivity.LengthActivity;
+import com.hasan.multiconvert.UnitActivity.MassActivity;
+import com.hasan.multiconvert.UnitActivity.SpeedActivity;
+import com.hasan.multiconvert.UnitActivity.TemperatureActivity;
+import com.hasan.multiconvert.UnitActivity.TimesActivity;
+import com.hasan.multiconvert.UnitActivity.VolumeActivity;
+import com.hasan.multiconvert.UnitActivity.WeightActivity;
+
 import java.util.HashMap;
 import java.util.Map;
 

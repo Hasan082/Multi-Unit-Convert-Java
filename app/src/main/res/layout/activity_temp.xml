@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TemperatureActivity">
+    android:padding="16dp"
+    tools:context=".UnitActivity.TemperatureActivity">
 
-    <include layout="@layout/app_bar_layout" />
+<!--    <include layout="@layout/app_bar_layout" />-->
 
     <ScrollView
         android:id="@+id/unitScrollParent"
@@ -17,13 +17,14 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            >
 
             <EditText
                 android:id="@+id/editTextLengthValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:textSize="@dimen/text_small"
                 android:hint="@string/enter_length"
                 android:inputType="numberDecimal"
                 android:minHeight="48dp"
@@ -33,6 +34,7 @@
                 android:id="@+id/spinnerUnits"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/text_small"
                 android:layout_below="@id/editTextLengthValue"
                 android:layout_marginBottom="16dp"
                 android:entries="@array/temperature_units"
@@ -49,7 +51,7 @@
                     android:id="@+id/btnConvert"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_medium"
                     android:background="@drawable/btn_bg_color"
                     android:textColor="@color/btnTextColor"
                     android:minHeight="48dp"
@@ -60,7 +62,7 @@
                     android:id="@+id/btnClear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_medium"
                     android:background="@drawable/btn_bg_color"
                     android:textColor="@color/btnTextColor"
                     android:minHeight="48dp"

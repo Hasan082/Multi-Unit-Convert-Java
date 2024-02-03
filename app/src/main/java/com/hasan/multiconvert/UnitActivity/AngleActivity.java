@@ -1,8 +1,6 @@
-package com.hasan.multiconvert;
+package com.hasan.multiconvert.UnitActivity;
 
 import static com.hasan.multiconvert.utils.AppBarUtil.setAppBarTitle;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -13,10 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.hasan.multiconvert.R;
 import com.hasan.multiconvert.ReusableUiLogic.ReusableUiLogin;
 import com.hasan.multiconvert.utils.HideKeyBoard;
 
-public class FuelActivity extends AppCompatActivity {
+public class AngleActivity extends AppCompatActivity {
     LinearLayout parentLayout;
     Spinner spinner;
     EditText editTextLengthValue;
@@ -25,10 +26,11 @@ public class FuelActivity extends AppCompatActivity {
     String[] resourceUnits;
     double inputValue;
     ReusableUiLogin reusableUiLogin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fuel);
+        setContentView(R.layout.activity_angle);
         setAppBarTitle(this);
 
         parentLayout = findViewById(R.id.lengthParentView);
@@ -73,39 +75,50 @@ public class FuelActivity extends AppCompatActivity {
         });
 
 
+
+
+
     }
 
     private double[] ConvertUnits(double inputValue, String spinnerText) {
-        double usGallon, imperialGallon, liter, milliliter;
+        double degree, radian, grad, minuteOfArc, secondOfArc;
 
-        if (spinnerText.contains("(gal)")) {
-            usGallon = inputValue;
-            imperialGallon = inputValue * 0.832674;
-            liter = inputValue * 3.78541;
-            milliliter = inputValue * 3785.41;
-        } else if (spinnerText.contains("(imp gal)")) {
-            usGallon = inputValue * 1.20095;
-            imperialGallon = inputValue;
-            liter = inputValue * 4.54609;
-            milliliter = inputValue * 4546.09;
-        } else if (spinnerText.contains("(L)")) {
-            usGallon = inputValue * 0.264172;
-            imperialGallon = inputValue * 0.219969;
-            liter = inputValue;
-            milliliter = inputValue * 1000;
-        } else if (spinnerText.contains("(mL)")) {
-            usGallon = inputValue * 0.000264172;
-            imperialGallon = inputValue * 0.000219969;
-            liter = inputValue * 0.001;
-            milliliter = inputValue;
+        if (spinnerText.contains("(°)")) {
+            degree = inputValue;
+            radian = Math.toRadians(inputValue);
+            grad = inputValue * 10 / 9;
+            minuteOfArc = inputValue * 60;
+            secondOfArc = inputValue * 3600;
+        } else if (spinnerText.contains("(rad)")) {
+            degree = Math.toDegrees(inputValue);
+            radian = inputValue;
+            grad = Math.toDegrees(inputValue) * 10 / 9;
+            minuteOfArc = Math.toDegrees(inputValue) * 60;
+            secondOfArc = Math.toDegrees(inputValue) * 3600;
+        } else if (spinnerText.contains("(grad)")) {
+            degree = inputValue * 9 / 10;
+            radian = Math.toRadians(inputValue * 9 / 10);
+            grad = inputValue;
+            minuteOfArc = inputValue * 54 / 5;
+            secondOfArc = inputValue * 3240 / 5;
+        } else if (spinnerText.contains("(,)")) {
+            degree = inputValue / 60;
+            radian = Math.toRadians(inputValue / 60);
+            grad = inputValue / 54;
+            minuteOfArc = inputValue;
+            secondOfArc = inputValue * 60;
+        } else if (spinnerText.contains("(,,)")) {
+            degree = inputValue / 3600;
+            radian = Math.toRadians(inputValue / 3600);
+            grad = inputValue / 3240;
+            minuteOfArc = inputValue / 60;
+            secondOfArc = inputValue;
         } else {
-            usGallon = imperialGallon = liter = milliliter = 0.0;
+            degree = radian = grad = minuteOfArc = secondOfArc = 0.0;
         }
 
-        return new double[]{usGallon, imperialGallon, liter, milliliter};
+        return new double[]{degree, radian, grad, minuteOfArc, secondOfArc};
     }
-
-
 
 
 }

@@ -1,4 +1,4 @@
-package com.hasan.multiconvert;
+package com.hasan.multiconvert.UnitActivity;
 
 import static com.hasan.multiconvert.utils.AppBarUtil.setAppBarTitle;
 
@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.hasan.multiconvert.R;
 import com.hasan.multiconvert.utils.HideKeyBoard;
 
 import java.util.Locale;

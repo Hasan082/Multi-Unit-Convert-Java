@@ -1,7 +1,8 @@
-package com.hasan.multiconvert;
-
+package com.hasan.multiconvert.UnitActivity;
 
 import static com.hasan.multiconvert.utils.AppBarUtil.setAppBarTitle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -13,14 +14,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.hasan.multiconvert.R;
 import com.hasan.multiconvert.utils.HideKeyBoard;
 
 import java.util.Locale;
 
-
-public class LengthActivity extends AppCompatActivity {
+public class TemperatureActivity extends AppCompatActivity {
     LinearLayout parentLayout;
     String formattedValue;
     Spinner spinner;
@@ -29,11 +28,10 @@ public class LengthActivity extends AppCompatActivity {
     Resources res;
     String[] resourceUnits;
     double inputValue;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_length);
+        setContentView(R.layout.activity_temp);
         setAppBarTitle(this);
 
         parentLayout = findViewById(R.id.lengthParentView);
@@ -42,7 +40,7 @@ public class LengthActivity extends AppCompatActivity {
         btnConvert = findViewById(R.id.btnConvert);
         btnClear = findViewById(R.id.btnClear);
         res = getResources();
-        resourceUnits = res.getStringArray(R.array.length_units);
+        resourceUnits = res.getStringArray(R.array.energy_units);
 
         btnConvert.setOnClickListener(v -> {
             String edyTxtStr = editTextLengthValue.getText().toString().trim();
@@ -100,71 +98,28 @@ public class LengthActivity extends AppCompatActivity {
     }
 
     private double[] ConvertUnits(double inputValue, String spinnerText) {
+        double celsius, fahrenheit, kelvin;
 
-        double km, m, cm, mm, inch, foot, yard;
-
-        if (spinnerText.contains("(km)")) {
-            km = inputValue;
-            m = inputValue * 1000;
-            cm = inputValue * 100000;
-            mm = inputValue * 1000000;
-            inch = inputValue * 39370.1;
-            foot = inputValue * 3280.84;
-            yard = inputValue * 1093.61;
-        } else if (spinnerText.contains("(m)")) {
-            km = inputValue / 1000;
-            m = inputValue;
-            cm = inputValue * 100;
-            mm = inputValue * 1000;
-            inch = inputValue * 39.3701;
-            foot = inputValue * 3.28084;
-            yard = inputValue * 1.09361;
-        } else if (spinnerText.contains("(cm)")) {
-            km = inputValue / 100000;
-            m = inputValue / 100;
-            cm = inputValue;
-            mm = inputValue * 10;
-            inch = inputValue / 2.54;
-            foot = inputValue / 30.48;
-            yard = inputValue / 91.44;
-        } else if (spinnerText.contains("(mm)")) {
-            km = inputValue / 1000000;
-            m = inputValue / 1000;
-            cm = inputValue / 10;
-            mm = inputValue;
-            inch = inputValue / 25.4;
-            foot = inputValue / 304.8;
-            yard = inputValue / 914.4;
-        } else if (spinnerText.contains("(in)")) {
-            km = inputValue / 39370.1;
-            m = inputValue / 39.3701;
-            cm = inputValue * 2.54;
-            mm = inputValue * 25.4;
-            inch = inputValue;
-            foot = inputValue / 12;
-            yard = inputValue / 36;
-        } else if (spinnerText.contains("(ft)")) {
-            km = inputValue / 3280.84;
-            m = inputValue / 3.28084;
-            cm = inputValue * 30.48;
-            mm = inputValue * 304.8;
-            inch = inputValue * 12;
-            foot = inputValue;
-            yard = inputValue / 3;
-        } else if (spinnerText.contains("(yd)")) {
-            km = inputValue / 1093.61;
-            m = inputValue / 1.09361;
-            cm = inputValue * 91.44;
-            mm = inputValue * 914.4;
-            inch = inputValue * 36;
-            foot = inputValue * 3;
-            yard = inputValue;
+        if (spinnerText.contains("(°C)")) {
+            celsius = inputValue;
+            fahrenheit = (inputValue * 9/5) + 32;
+            kelvin = inputValue + 273.15;
+        } else if (spinnerText.contains("(°F)")) {
+            celsius = (inputValue - 32) * 5/9;
+            fahrenheit = inputValue;
+            kelvin = (inputValue - 32) * 5/9 + 273.15;
+        } else if (spinnerText.contains("(K)")) {
+            celsius = inputValue - 273.15;
+            fahrenheit = (inputValue - 273.15) * 9/5 + 32;
+            kelvin = inputValue;
         } else {
-            km = m = cm = mm = inch = foot = yard = 0.0;
+            celsius = fahrenheit = kelvin = 0.0;
         }
 
-        return new double[]{km, m, cm, mm, inch, foot, yard};
+        return new double[]{celsius, fahrenheit, kelvin};
     }
+
+
 
 
 }

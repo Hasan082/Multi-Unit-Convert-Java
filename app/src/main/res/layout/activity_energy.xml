@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     android:orientation="vertical"
-    tools:context=".EnergyActivity">
+    tools:context=".UnitActivity.EnergyActivity">
 
     <include layout="@layout/app_bar_layout" />
 
@@ -16,7 +17,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            >
 
             <EditText
                 android:id="@+id/editTextLengthValue"
@@ -24,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:hint="@string/enter_length"
+                android:textSize="@dimen/text_small"
                 android:inputType="numberDecimal"
                 android:minHeight="48dp"
                 android:autofillHints="" />
@@ -32,6 +34,7 @@
                 android:id="@+id/spinnerUnits"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/text_small"
                 android:layout_below="@id/editTextLengthValue"
                 android:layout_marginBottom="16dp"
                 android:entries="@array/energy_units"
@@ -48,7 +51,7 @@
                     android:id="@+id/btnConvert"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_medium"
                     android:background="@drawable/btn_bg_color"
                     android:textColor="@color/btnTextColor"
                     android:minHeight="48dp"
@@ -59,7 +62,7 @@
                     android:id="@+id/btnClear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_medium"
                     android:background="@drawable/btn_bg_color"
                     android:textColor="@color/btnTextColor"
                     android:minHeight="48dp"

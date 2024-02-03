@@ -1,4 +1,4 @@
-package com.hasan.multiconvert;
+package com.hasan.multiconvert.UnitActivity;
 
 import static com.hasan.multiconvert.utils.AppBarUtil.setAppBarTitle;
 
@@ -14,11 +14,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hasan.multiconvert.R;
 import com.hasan.multiconvert.utils.HideKeyBoard;
 
 import java.util.Locale;
 
-public class AreaActivity extends AppCompatActivity {
+public class SpeedActivity extends AppCompatActivity {
     LinearLayout parentLayout;
     String formattedValue;
     Spinner spinner;
@@ -30,9 +31,8 @@ public class AreaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_area);
+        setContentView(R.layout.activity_speed);
         setAppBarTitle(this);
-
 
         parentLayout = findViewById(R.id.lengthParentView);
         spinner = findViewById(R.id.spinnerUnits);
@@ -40,7 +40,7 @@ public class AreaActivity extends AppCompatActivity {
         btnConvert = findViewById(R.id.btnConvert);
         btnClear = findViewById(R.id.btnClear);
         res = getResources();
-        resourceUnits = res.getStringArray(R.array.area_units);
+        resourceUnits = res.getStringArray(R.array.speed_units);
 
         btnConvert.setOnClickListener(v -> {
             String edyTxtStr = editTextLengthValue.getText().toString().trim();
@@ -94,76 +94,76 @@ public class AreaActivity extends AppCompatActivity {
             btnClear.setVisibility(View.GONE);
         });
 
+
+
+
     }
 
     private double[] ConvertUnits(double inputValue, String spinnerText) {
-        double squareKm, squareMeter, squareCm, squareMm, squareInch, squareFoot, squareYard;
+        double meterPerSecond, kilometerPerHour, milesPerHour, knots, feetPerSecond, yardPerSecond, kilometerPerMinute;
 
-        if (spinnerText.contains("(km²)")) {
-            squareKm = inputValue;
-            squareMeter = inputValue * 1_000_000;
-            squareCm = inputValue * 10_000_000_000.0;
-            squareMm = inputValue * 1_000_000_000_000.0;
-            squareInch = inputValue * 1_550_003.1;
-            squareFoot = inputValue * 10_764;
-            squareYard = inputValue * 1_195.99;
-        } else if (spinnerText.contains("(m²)")) {
-            squareKm = inputValue / 1_000_000;
-            squareMeter = inputValue;
-            squareCm = inputValue * 10_000;
-            squareMm = inputValue * 1_000_000;
-            squareInch = inputValue * 1550.0031;
-            squareFoot = inputValue * 10.764;
-            squareYard = inputValue * 1.19599;
-        } else if (spinnerText.contains("(cm²)")) {
-            squareKm = inputValue / 10_000_000_000.0;
-            squareMeter = inputValue / 10_000;
-            squareCm = inputValue;
-            squareMm = inputValue * 100;
-            squareInch = inputValue * 0.15500031;
-            squareFoot = inputValue * 0.0010764;
-            squareYard = inputValue * 0.000119599;
-        } else if (spinnerText.contains("(mm²)")) {
-            squareKm = inputValue / 1_000_000_000_000.0;
-            squareMeter = inputValue / 1_000_000;
-            squareCm = inputValue / 100;
-            squareMm = inputValue;
-            squareInch = inputValue * 0.00015500031;
-            squareFoot = inputValue * 0.0000010764;
-            squareYard = inputValue * 0.000000119599;
-        } else if (spinnerText.contains("(in²)")) {
-            squareKm = inputValue / 1_550_003.1;
-            squareMeter = inputValue / 1550.0031;
-            squareCm = inputValue / 0.15500031;
-            squareMm = inputValue / 0.00015500031;
-            squareInch = inputValue;
-            squareFoot = inputValue / 144;
-            squareYard = inputValue / 1296;
-        } else if (spinnerText.contains("(ft²)")) {
-            squareKm = inputValue / 10_764;
-            squareMeter = inputValue / 10.764;
-            squareCm = inputValue / 0.0010764;
-            squareMm = inputValue / 0.0000010764;
-            squareInch = inputValue * 144;
-            squareFoot = inputValue;
-            squareYard = inputValue / 9;
-        } else if (spinnerText.contains("(yd²)")) {
-            squareKm = inputValue / 1_195.99;
-            squareMeter = inputValue / 1.19599;
-            squareCm = inputValue / 0.000119599;
-            squareMm = inputValue / 0.000000119599;
-            squareInch = inputValue * 1296;
-            squareFoot = inputValue * 9;
-            squareYard = inputValue;
+        if (spinnerText.contains("(m/s)")) {
+            meterPerSecond = inputValue;
+            kilometerPerHour = inputValue * 3.6;
+            milesPerHour = inputValue * 2.23694;
+            knots = inputValue * 1.94384;
+            feetPerSecond = inputValue * 3.28084;
+            yardPerSecond = inputValue * 1.09361;
+            kilometerPerMinute = inputValue * 0.06;
+        } else if (spinnerText.contains("(km/h)")) {
+            meterPerSecond = inputValue / 3.6;
+            kilometerPerHour = inputValue;
+            milesPerHour = inputValue * 0.621371;
+            knots = inputValue * 0.539957;
+            feetPerSecond = inputValue * 0.911344;
+            yardPerSecond = inputValue * 0.3048;
+            kilometerPerMinute = inputValue * 0.0166667;
+        } else if (spinnerText.contains("(mph)")) {
+            meterPerSecond = inputValue / 2.23694;
+            kilometerPerHour = inputValue / 0.621371;
+            milesPerHour = inputValue;
+            knots = inputValue * 0.868976;
+            feetPerSecond = inputValue * 1.46667;
+            yardPerSecond = inputValue * 0.488889;
+            kilometerPerMinute = inputValue * 0.0277778;
+        } else if (spinnerText.contains("(kn)")) {
+            meterPerSecond = inputValue / 1.94384;
+            kilometerPerHour = inputValue / 0.539957;
+            milesPerHour = inputValue / 0.868976;
+            knots = inputValue;
+            feetPerSecond = inputValue * 1.68781;
+            yardPerSecond = inputValue * 0.562704;
+            kilometerPerMinute = inputValue * 0.0299765;
+        } else if (spinnerText.contains("(ft/s)")) {
+            meterPerSecond = inputValue / 3.28084;
+            kilometerPerHour = inputValue / 0.911344;
+            milesPerHour = inputValue / 1.46667;
+            knots = inputValue / 1.68781;
+            feetPerSecond = inputValue;
+            yardPerSecond = inputValue * 0.333333;
+            kilometerPerMinute = inputValue * 0.018288;
+        } else if (spinnerText.contains("(yd/s)")) {
+            meterPerSecond = inputValue / 1.09361;
+            kilometerPerHour = inputValue / 0.3048;
+            milesPerHour = inputValue / 0.488889;
+            knots = inputValue / 0.562704;
+            feetPerSecond = inputValue / 0.333333;
+            yardPerSecond = inputValue;
+            kilometerPerMinute = inputValue * 0.0546807;
+        } else if (spinnerText.contains("(km/min)")) {
+            meterPerSecond = inputValue / 0.06;
+            kilometerPerHour = inputValue / 0.0166667;
+            milesPerHour = inputValue / 0.0277778;
+            knots = inputValue / 0.0299765;
+            feetPerSecond = inputValue / 0.018288;
+            yardPerSecond = inputValue / 0.0546807;
+            kilometerPerMinute = inputValue;
         } else {
-            squareKm = squareMeter = squareCm = squareMm = squareInch = squareFoot = squareYard = 0.0;
+            meterPerSecond = kilometerPerHour = milesPerHour = knots = feetPerSecond = yardPerSecond = kilometerPerMinute = 0.0;
         }
 
-        return new double[]{squareKm, squareMeter, squareCm, squareMm, squareInch, squareFoot, squareYard};
+        return new double[]{meterPerSecond, kilometerPerHour, milesPerHour, knots, feetPerSecond, yardPerSecond, kilometerPerMinute};
     }
-
-
-
 
 
 }

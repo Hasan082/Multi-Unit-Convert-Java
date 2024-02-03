@@ -1,4 +1,4 @@
-package com.hasan.multiconvert;
+package com.hasan.multiconvert.UnitActivity;
 
 import static com.hasan.multiconvert.utils.AppBarUtil.setAppBarTitle;
 
@@ -14,11 +14,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hasan.multiconvert.R;
 import com.hasan.multiconvert.utils.HideKeyBoard;
 
 import java.util.Locale;
 
-public class TemperatureActivity extends AppCompatActivity {
+public class DensityActivity extends AppCompatActivity {
     LinearLayout parentLayout;
     String formattedValue;
     Spinner spinner;
@@ -30,7 +31,7 @@ public class TemperatureActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_temp);
+        setContentView(R.layout.activity_density);
         setAppBarTitle(this);
 
         parentLayout = findViewById(R.id.lengthParentView);
@@ -39,7 +40,7 @@ public class TemperatureActivity extends AppCompatActivity {
         btnConvert = findViewById(R.id.btnConvert);
         btnClear = findViewById(R.id.btnClear);
         res = getResources();
-        resourceUnits = res.getStringArray(R.array.energy_units);
+        resourceUnits = res.getStringArray(R.array.density_units);
 
         btnConvert.setOnClickListener(v -> {
             String edyTxtStr = editTextLengthValue.getText().toString().trim();
@@ -97,27 +98,56 @@ public class TemperatureActivity extends AppCompatActivity {
     }
 
     private double[] ConvertUnits(double inputValue, String spinnerText) {
-        double celsius, fahrenheit, kelvin;
+        double kgPerCubicMeter, gPerCubicCentimeter, gPerLiter, lbPerCubicInch, lbPerCubicFoot, ozPerCubicInch;
 
-        if (spinnerText.contains("(°C)")) {
-            celsius = inputValue;
-            fahrenheit = (inputValue * 9/5) + 32;
-            kelvin = inputValue + 273.15;
-        } else if (spinnerText.contains("(°F)")) {
-            celsius = (inputValue - 32) * 5/9;
-            fahrenheit = inputValue;
-            kelvin = (inputValue - 32) * 5/9 + 273.15;
-        } else if (spinnerText.contains("(K)")) {
-            celsius = inputValue - 273.15;
-            fahrenheit = (inputValue - 273.15) * 9/5 + 32;
-            kelvin = inputValue;
+        if (spinnerText.contains("(kg/m³)")) {
+            kgPerCubicMeter = inputValue;
+            gPerCubicCentimeter = inputValue / 1000;
+            gPerLiter = inputValue / 1000;
+            lbPerCubicInch = inputValue * 6.2428e-5;
+            lbPerCubicFoot = inputValue * 0.0624279;
+            ozPerCubicInch = inputValue * 0.0353147;
+        } else if (spinnerText.contains("(g/cm³)")) {
+            kgPerCubicMeter = inputValue * 1000;
+            gPerCubicCentimeter = inputValue;
+            gPerLiter = inputValue * 1000;
+            lbPerCubicInch = inputValue * 0.0000353147;
+            lbPerCubicFoot = inputValue * 0.0353147;
+            ozPerCubicInch = inputValue * 0.035274;
+        } else if (spinnerText.contains("(g/L)")) {
+            kgPerCubicMeter = inputValue * 1000;
+            gPerCubicCentimeter = inputValue / 1000;
+            gPerLiter = inputValue;
+            lbPerCubicInch = inputValue * 0.0000353147;
+            lbPerCubicFoot = inputValue * 0.0353147;
+            ozPerCubicInch = inputValue * 0.035274;
+        } else if (spinnerText.contains("(lb/in³)")) {
+            kgPerCubicMeter = inputValue * 16.0185;
+            gPerCubicCentimeter = inputValue * 453.592;
+            gPerLiter = inputValue * 453.592;
+            lbPerCubicInch = inputValue;
+            lbPerCubicFoot = inputValue * 1728;
+            ozPerCubicInch = inputValue * 27.6799;
+        } else if (spinnerText.contains("(lb/ft³)")) {
+            kgPerCubicMeter = inputValue * 0.0160185;
+            gPerCubicCentimeter = inputValue * 0.453592;
+            gPerLiter = inputValue * 0.453592;
+            lbPerCubicInch = inputValue * 0.000578704;
+            lbPerCubicFoot = inputValue;
+            ozPerCubicInch = inputValue * 0.000496507;
+        } else if (spinnerText.contains("(oz/in³)")) {
+            kgPerCubicMeter = inputValue * 0.453592;
+            gPerCubicCentimeter = inputValue * 28.3495;
+            gPerLiter = inputValue * 28.3495;
+            lbPerCubicInch = inputValue * 0.0361273;
+            lbPerCubicFoot = inputValue * 1.00115;
+            ozPerCubicInch = inputValue;
         } else {
-            celsius = fahrenheit = kelvin = 0.0;
+            kgPerCubicMeter = gPerCubicCentimeter = gPerLiter = lbPerCubicInch = lbPerCubicFoot = ozPerCubicInch = 0.0;
         }
 
-        return new double[]{celsius, fahrenheit, kelvin};
+        return new double[]{kgPerCubicMeter, gPerCubicCentimeter, gPerLiter, lbPerCubicInch, lbPerCubicFoot, ozPerCubicInch};
     }
-
 
 
 

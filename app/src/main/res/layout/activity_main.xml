@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:paddingEnd="20dp"
+    android:paddingStart="20dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
     android:orientation="vertical"
-    android:background="#121212"
+    android:background="@color/colorPrimary"
     tools:context=".MainActivity">
 
     <TextView
@@ -15,7 +17,7 @@
         android:text="@string/unit_converter"
         android:textColor="@color/textColor"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="@dimen/text_large"
         android:layout_marginTop="7dp"
         android:layout_marginBottom="15dp"
         />
@@ -24,8 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:scrollbars="none"
         >
-
 
         <GridLayout
             android:layout_width="match_parent"
@@ -53,7 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/length"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_small"
                     android:textColor="@color/textColor"
                     android:layout_marginTop="5dp"
                     />
@@ -86,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/area"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_small"
                     android:textColor="@color/textColor"
                     android:layout_marginTop="5dp"
                     />
@@ -114,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/mass"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_small"
                     android:textColor="@color/textColor"
                     android:layout_marginTop="5dp"
                     />
@@ -147,7 +149,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/volume"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_small"
                     android:textColor="@color/textColor"
                     android:layout_marginTop="5dp"
                     />
@@ -175,7 +177,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/time"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_small"
                     android:textColor="@color/textColor"
                     android:layout_marginTop="5dp"
                     />
@@ -208,7 +210,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/speed"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_small"
                     android:textColor="@color/textColor"
                     android:layout_marginTop="5dp"
                     />
@@ -234,7 +236,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/density"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_small"
                     android:textColor="@color/textColor"
                     android:layout_marginTop="5dp"
                     />
@@ -267,7 +269,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/temperature"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_small"
                     android:textColor="@color/textColor"
                     android:layout_marginTop="5dp"
                     />
@@ -293,7 +295,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/weight"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_small"
                     android:textColor="@color/textColor"
                     android:layout_marginTop="5dp"
                     />
@@ -326,14 +328,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/energy"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_small"
                     android:textColor="@color/textColor"
                     android:layout_marginTop="5dp"
                     />
 
             </LinearLayout>
 
-<!--            mew -->
 
             <LinearLayout
                 android:id="@+id/fuel"
@@ -354,7 +355,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/fuel"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_small"
                     android:textColor="@color/textColor"
                     android:layout_marginTop="5dp"
                     />
@@ -387,7 +388,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/angle"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_small"
                     android:textColor="@color/textColor"
                     android:layout_marginTop="5dp"
                     />

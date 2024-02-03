@@ -2,9 +2,15 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MultiConvertAllInOne" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorControlActivated">@color/textColor</item>
     </style>
-
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+    </style>
+    <style name="CustomAppBarTextStyle">
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:textColor">@color/textColor</item>
+    </style>
     <style name="Theme.MultiConvertAllInOne" parent="Base.Theme.MultiConvertAllInOne" />
 </resources>
