@@ -8,25 +8,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hasan.multiconvert.R;
+import com.hasan.multiconvert.ReusableUiLogic.ReusableClearBtn;
+import com.hasan.multiconvert.ReusableUiLogic.ReusableUiLogin;
 import com.hasan.multiconvert.utils.HideKeyBoard;
-
-import java.util.Locale;
 
 public class EnergyActivity extends AppCompatActivity {
 
     LinearLayout parentLayout;
-    String formattedValue;
     Spinner spinner;
     EditText editTextLengthValue;
     Button btnConvert, btnClear;
     String[] resourceUnits;
     double inputValue;
+    ReusableUiLogin reusableUiLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,58 +39,30 @@ public class EnergyActivity extends AppCompatActivity {
         btnConvert = findViewById(R.id.btnConvert);
         btnClear = findViewById(R.id.btnClear);
         resourceUnits = getResources().getStringArray(R.array.energy_units);
+        reusableUiLogin = new ReusableUiLogin(this);
+
 
         btnConvert.setOnClickListener(v -> {
+
             String edyTxtStr = editTextLengthValue.getText().toString().trim();
 
-            if(!edyTxtStr.isEmpty()){
+            if (!edyTxtStr.isEmpty()) {
                 inputValue = Double.parseDouble(edyTxtStr);
                 String spinnerText = spinner.getSelectedItem().toString();
                 double[] unitValArray = ConvertUnits(inputValue, spinnerText);
-
-                for (int i = 0; i < resourceUnits.length; i++) {
-                    View unitLayoutView = getLayoutInflater().inflate(R.layout.length_unit_layout, parentLayout, false);
-                    TextView unitName = unitLayoutView.findViewById(R.id.unitMetric);
-                    TextView unitVal = unitLayoutView.findViewById(R.id.unitValue);
-                    String kmValue = resourceUnits[i];
-                    String formattedText = kmValue + getString(R.string.unitIndicator) + " ";
-                    unitName.setText(formattedText);
-                    if (unitValArray[i] % 1 == 0) {
-                        formattedValue = String.format(Locale.US, "%.0f", unitValArray[i]);
-                    } else if (unitValArray[i] * 1000 % 1 == 0) {
-                        String stringValue = String.format(Locale.US, "%.3f", unitValArray[i]);
-                        formattedValue = stringValue.replaceAll("\\.?0*$", "");
-                    } else {
-                        String stringValue = String.format(Locale.US, "%.5f", unitValArray[i]);
-                        formattedValue = stringValue.replaceAll("\\.?0*$", "");
-                    }
-                    unitVal.setText(formattedValue);
-
-                    if (resourceUnits[i].equals(spinnerText)) {
-                        unitLayoutView.setVisibility(View.GONE);
-                    }
-
-                    parentLayout.addView(unitLayoutView);
-                }
-
-                editTextLengthValue.clearFocus();
-                HideKeyBoard.hideKeyboard(this, v);
+                reusableUiLogin.updateUI(unitValArray, resourceUnits, spinnerText, parentLayout);
+                editTextLengthValue.setEnabled(false);
+                spinner.setEnabled(false);
                 btnConvert.setVisibility(View.GONE);
                 btnClear.setVisibility(View.VISIBLE);
-
-            } else {
                 HideKeyBoard.hideKeyboard(this, v);
-                Toast.makeText(this, "Please input length", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Please Input Units", Toast.LENGTH_LONG).show();
             }
+
         });
 
-        btnClear.setOnClickListener(v -> {
-            editTextLengthValue.setText("");
-            spinner.setSelection(0);
-            parentLayout.removeAllViews();
-            btnConvert.setVisibility(View.VISIBLE);
-            btnClear.setVisibility(View.GONE);
-        });
+        btnClear.setOnClickListener(v -> ReusableClearBtn.ClearBtn(editTextLengthValue, spinner,parentLayout,btnConvert, btnClear));
 
 
     }

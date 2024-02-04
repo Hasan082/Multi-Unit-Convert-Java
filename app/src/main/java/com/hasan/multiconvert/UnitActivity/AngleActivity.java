@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hasan.multiconvert.R;
+import com.hasan.multiconvert.ReusableUiLogic.ReusableClearBtn;
 import com.hasan.multiconvert.ReusableUiLogic.ReusableUiLogin;
 import com.hasan.multiconvert.utils.HideKeyBoard;
 
@@ -63,19 +64,7 @@ public class AngleActivity extends AppCompatActivity {
 
         });
 
-
-        btnClear.setOnClickListener(v -> {
-            editTextLengthValue.setEnabled(true);
-            editTextLengthValue.setText("");
-            spinner.setSelection(0);
-            spinner.setEnabled(true);
-            parentLayout.removeAllViews();
-            btnConvert.setVisibility(View.VISIBLE);
-            btnClear.setVisibility(View.GONE);
-        });
-
-
-
+        btnClear.setOnClickListener(v -> ReusableClearBtn.ClearBtn(editTextLengthValue, spinner,parentLayout,btnConvert, btnClear));
 
 
     }

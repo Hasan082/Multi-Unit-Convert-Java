@@ -1,10 +1,10 @@
 package com.hasan.multiconvert.ReusableUiLogic;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.hasan.multiconvert.R;
@@ -30,6 +30,7 @@ public class ReusableUiLogin {
             unitName.setText(formattedText);
 
             String formattedValue;
+
             if (unitValArray[i] % 1 == 0) {
                 formattedValue = String.format(Locale.US, "%.0f", unitValArray[i]);
             } else if (unitValArray[i] * 1000 % 1 == 0) {
